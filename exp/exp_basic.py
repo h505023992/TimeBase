@@ -9,7 +9,6 @@ class Exp_Basic(object):
         self.orthogonal_weight = args.orthogonal_weight
         self.device = self._acquire_device()
         self.model = self._build_model().to(self.device)
-
         input = torch.randn(1,args.seq_len ,args.enc_in ).to(self.device)
 
         macs, params = profile(self.model, inputs=(input, ))
@@ -22,7 +21,6 @@ class Exp_Basic(object):
         else:
             print( f"{macs} MACs")
 
-        
     def _build_model(self):
         raise NotImplementedError
         return None
